@@ -1,0 +1,131 @@
+{% extends "main.html" %} {% load static %} {% block content %}
+<!-- Start Main-->
+<main class="main main--profile">
+  <div class="container">
+    <div class="layout">
+      <div class="profile__card">
+        <img
+          src="{{profile.image.url}}"
+          alt="dev image"
+          class="profile__card--img"
+        />
+        <div class="profile__card--content">
+          <h2 class="dev__name">{{profile.name}}</h2>
+          <p class="dev__title">{{profile.headline|slice:"80"}}</p>
+          <span class="dev__location"> {{profile.location}}</span>
+        </div>
+
+        <ul class="profile__card--social">
+          {% if profile.social_github %}
+          <li class="social__link">
+            <a href="{{profile.social_github}}" target="_blank"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </li>
+          {% endif %} {% if profile.social_stackoverflow %}
+          <li class="social__link">
+            <a href="{{profile.social_stackoverflow}}" target="_blank"
+              ><i class="fa-brands fa-stack-overflow"></i
+            ></a>
+          </li>
+          {% endif %} {% if profile.social_twitter%}
+          <li class="social__link">
+            <a href="{{profile.social_twitter}}" target="_blank"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+          </li>
+          {% endif %} {% if profile.social_linkedin%}
+          <li class="social__link">
+            <a href="{{profile.social_linkedin}}" target="_blank"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+          </li>
+          {% endif %} {% if profile.social_website%}
+          <li class="social__link">
+            <a href="{{profile.social_website}}" target="_blank"
+              ><i class="fa-solid fa-earth-africa"></i
+            ></a>
+          </li>
+          {% endif %}
+        </ul>
+
+        <a href="#" class="btn profile__card--btn">Send Message</a>
+      </div>
+
+      <!--
+              
+          -->
+
+      <div class="profile__content">
+        <div class="profile__content--desc section--padding">
+          <h3 class="subtitle">About Me</h3>
+          <p>{{profile.bio}}</p>
+        </div>
+        <div class="profile__content--skills section--padding">
+          <h3 class="subtitle">Skills</h3>
+          {%for skill in topSkills%}
+          <div class="skill">
+            <span class>{{skill.name}}</span>
+            <p>{{skill.description}}</p>
+          </div>
+          {%endfor%}
+          <div class="otherSkills section--padding">
+            <h3 class="subtitle">Other Skills</h3>
+            <div class="tags tags__container">
+              {% for skill in otherSkills %}
+              <span class="tag">
+                <small>{{skill.name}}</small>
+              </span>
+              {%endfor%}
+            </div>
+          </div>
+        </div>
+        <div class="profile__content--projects section--padding">
+          <h3 class="subtitle">Projects</h3>
+          <div class="cards">
+            {% for project in profile.project_set.all %}
+            <div class="card">
+              <a href="{% url 'project' project.id %}" class="card__body">
+                <img
+                  class="project__image"
+                  src="{{project.image.url}}"
+                  alt="project image"
+                />
+                <div class="project__info">
+                  <h3 class="project__title">{{project.title}}</h3>
+                  <p>
+                    <a
+                      class="project__author"
+                      href="{% url 'profile' project.owner.id %}"
+                      >{{project.owner.name}}</a
+                    >
+                  </p>
+                  <p class="project__rating">
+                    <span class="number">{{project.vote_ratio}}%</span>
+                    Postitive Feedback ({{project.vote_count}}
+                    Vote{{project.vote_count|pluralize:"s"}})
+                  </p>
+                  <div class="project__tags tags__container">
+                    {% for tag in project.tag_id.all|slice:"5" %}
+                    <span class="tag">
+                      <small>{{tag}}</small>
+                    </span>
+                    {%endfor%}
+                  </div>
+                </div>
+              </a>
+            </div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+
+      <!--
+              
+          -->
+    </div>
+  </div>
+</main>
+<!-- End Main -->
+
+{% endblock content %}

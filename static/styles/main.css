@@ -1,3 +1,7 @@
-.logo {
-  color: red;
-}
+@import url(./base.css);
+@import url(./components.css);
+@import url(./homepage.css);
+@import url(./projects.css);
+@import url(./single-project.css);
+@import url(./form.css);
+@import url(./profile.css);

@@ -2,7 +2,7 @@
 <h3>Are you Sure You Want To Delete => {{object.title}} Project ?</h3>
 <form action="" method="POST">
   {% csrf_token %} {{form.as_p}}
-  <a href="/projects">Back 👀</a>
+  <a href="{% url 'projects' %}">Back 👀</a>
   <input type="submit" />
 </form>
 

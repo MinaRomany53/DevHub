@@ -6,14 +6,12 @@ from .forms import ProjectForm
 
 def projects(request):
     projects = Project.objects.all()
-    noProjects = len(projects)
-    context = {"projects":projects , "noProjects":noProjects}
+    context = {"projects":projects}
     return render(request, "projects/projects.html",context)
 
     
 def project(request , pk):
     projectObj = Project.objects.get(id=pk) 
-    print(projectObj.image)
     tags = projectObj.tag_id.all()
     return render(request, "projects/project.html",{"projectObj":projectObj,"tags": tags} )
 

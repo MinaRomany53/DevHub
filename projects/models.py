@@ -1,17 +1,13 @@
 from django.db import models
 import uuid
-from email.policy import default
-from enum import unique
-from random import choices
-
-
+from users.models import Profile
 
 # Project Table
 class Project (models.Model):
     # id (Primary Key)
     id = models.UUIDField(default=uuid.uuid4, unique=True , primary_key=True, editable=False)
     #owner (Foreign Key One To Many Relation)
-    #######################################
+    owner = models.ForeignKey(Profile,null=True, blank=True , on_delete=models.SET_NULL)
     # title
     title = models.CharField(max_length=200)
     # description  

@@ -1,0 +1,111 @@
+/* Start Hero Section */
+.hero__section {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+.hero__section .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero__section--text {
+  padding: 3rem;
+}
+.hero__section--text h2 {
+  font-size: 4rem;
+  line-height: 52px;
+  font-weight: 300;
+  text-align: center;
+}
+.hero__section--text span {
+  font-weight: bold;
+  color: var(--color-border);
+}
+.hero__section--search {
+  padding: 3rem 0 4rem 0;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.search__input {
+  width: 50rem;
+  height: 5rem;
+  color: var(--color-primary);
+  font-size: 1.6rem;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-right: 2rem;
+  border: 2px solid var(--color-secondary);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--color-secondary);
+}
+@media (max-width: 550px) {
+  .search__input {
+    margin-bottom: 2rem;
+    margin-right: 0;
+  }
+}
+.search__input::placeholder {
+  color: #777;
+  font-size: 1.6rem;
+}
+.search__input:focus,
+.search__input:active {
+  outline: none;
+  border: 2px solid var(--color-border);
+}
+
+.btn__search {
+  font-size: 2rem;
+  padding: 1rem 4rem;
+}
+@media (max-width: 550px) {
+  .btn__search {
+    width: 50rem;
+    height: 5rem;
+  }
+}
+.btn__search:focus {
+  outline: none;
+}
+/* End Hero Section */
+
+/* Start Search Result Section */
+.search__result {
+  padding-top: 10rem;
+}
+.dev__profile {
+  padding: 2rem 2.5rem 1rem 2.5rem;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.dev__profile .avatar {
+  max-width: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+}
+.dev__meta h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+.dev__meta h5 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--color-paragragh);
+}
+.dev__info {
+  padding: 1rem 2.5rem;
+  line-height: 1.6;
+  color: var(--color-paragragh);
+  font-size: 1.3rem;
+}
+/* End Search Result Section */

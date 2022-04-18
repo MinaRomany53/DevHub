@@ -1,20 +1,95 @@
 {% extends "main.html" %} {% block content %}
 
-<h1>Here are our Projects! 😁🎉</h1>
-<h3>No Of Projects => {{noProjects}}</h3>
-<ul>
-  {% for project in projects %}
-  <li>ID: {{project.id}}</li>
-  <li>
-    <a href="/project/{{project.id}}" target="_blank">{{project.title}}</a> --
-    {{project.created}}
-  </li>
-  <li>{{project.vote_count}} Votes</li>
-  <li>Vote Ratio => {{project.vote_ratio}}%</li>
-  <a href="/update-project/{{project.id}}">Update 🔄</a>
-  <a href="/delete-project/{{project.id}}">Delete ❌</a>
-  <hr />
-  {% endfor%}
-</ul>
+<!-- Start Main-->
+<main class="main">
+  <!--Start Hero Section -->
+  <section class="hero__section">
+    <div class="container">
+      <div class="hero__section--text">
+        <h2>SEARCH FOR <span>PROJECTS</span></h2>
+      </div>
 
-{% endblock content %}
+      <div class="hero__section--search">
+        <form class="form" action="#" method="get">
+          <input
+            class="search__input"
+            id="formsearch"
+            type="text"
+            name="text"
+            placeholder="Search by developer name"
+          />
+          <input class="btn btn__search" type="submit" value="Search" />
+        </form>
+      </div>
+    </div>
+  </section>
+  <!--End Hero Section -->
+
+  <!--Start Search Result Section -->
+  <section class="search__result">
+    <div class="container">
+      <div class="cards">
+        {% for project in projects %}
+        <div class="card">
+          <a href="{% url 'project' project.id %}" class="card__body">
+            <img
+              class="project__image"
+              src="{{project.image.url}}"
+              alt="project image"
+            />
+            <div class="project__info">
+              <h3 class="project__title">{{project.title}}</h3>
+              <p>
+                {%if project.owner.id %}
+                <a class="project__author" href="/profile/{{project.owner.id}}"
+                  >By {{project.owner.name}}</a
+                >
+                {%else%}
+                <a class="project__author" href="">By Anonymous</a>
+                {%endif%}
+              </p>
+
+              <p class="project__rating">
+                <span class="number">{{project.vote_ratio}}%</span> Postitive
+                Feedback ({{project.vote_count}}
+                Vote{{project.vote_count|pluralize:"s"}})
+              </p>
+              <a href="{% url 'update-project' project.id %}">Update 🔄</a>
+              <a href="{% url 'delete-project' project.id %}">Delete ❌</a>
+              <div class="project__tags tags__container">
+                {% for tag in project.tag_id.all|slice:"5" %}
+                <span class="tag">
+                  <small>{{tag}}</small>
+                </span>
+                {%endfor%}
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor%}
+      </div>
+    </div>
+  </section>
+  <!--End Search Result Section -->
+
+  <!--Start pagination -->
+  <div class="pagination">
+    <ul class="container">
+      <li><a href="#" class="btn btn--disabled">&#10094; Prev</a></li>
+      <li><a href="#" class="btn btn--active">01</a></li>
+      <li><a href="#" class="btn">02</a></li>
+      <li><a href="#" class="btn">03</a></li>
+      <li><a href="#" class="btn">04</a></li>
+      <li><a href="#" class="btn">05</a></li>
+      <li><a href="#" class="btn">06</a></li>
+      <li><a href="#" class="btn">07</a></li>
+      <li><a href="#" class="btn">08</a></li>
+      <li><a href="#" class="btn">09</a></li>
+      <li><a href="#" class="btn">10</a></li>
+      <li><a href="#" class="btn">Next &#10095;</a></li>
+    </ul>
+  </div>
+  <!--End pagination -->
+
+  {% endblock content %}
+</main>
