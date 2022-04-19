@@ -1,0 +1,6 @@
+--Activate your VirtualEnv every time
+Set-ExecutionPolicy Unrestricted -Scope Process
+env\scripts\activate
+--------------------------------------------------
+--Run Live Server
+ py manage.py runserver
