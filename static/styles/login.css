@@ -1,0 +1,79 @@
+.form--small {
+  min-height: 100vh;
+}
+.form--small .container {
+  min-height: inherit;
+  align-items: center;
+}
+.form--small .box {
+  max-width: 60rem;
+}
+.login__text {
+  text-align: center;
+}
+.login__text .nav__logo .logo {
+  color: var(--color-border);
+  font-size: 4rem;
+}
+.login__text h2 {
+  font-size: 2.5rem;
+}
+.login__text p {
+  font-size: 1.8rem;
+  color: #999;
+}
+
+.form--small .form {
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+}
+
+.form--small .form--field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 1.5rem 0;
+}
+.form--small .form--field label {
+  margin-bottom: 0.6rem;
+}
+
+.form--small .form--field .input {
+  color: var(--color-secondary);
+  height: 5rem;
+}
+
+.form--small .form .btn {
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 1.5rem 4rem;
+  display: flex;
+  margin-right: auto;
+}
+.forget__password {
+  position: relative;
+  width: 100%;
+}
+.forget__password a {
+  position: absolute;
+  right: 0;
+  color: var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.4rem;
+}
+.sign__up {
+  padding: 0 5rem;
+}
+.sign__up p {
+  font-size: 1.4rem;
+}
+.sign__up a {
+  text-decoration: none;
+  color: var(--color-border);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}

@@ -1,5 +1,6 @@
+import email
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User # User Table already implemented
 import uuid
 
 # Profile Table
@@ -32,7 +33,7 @@ class Profile (models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str( self.user.username)
+        return str( self.user)
 
 
 
@@ -51,3 +52,7 @@ class Skill (models.Model):
    
     def __str__(self):
         return self.name
+
+
+
+

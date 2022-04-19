@@ -1,0 +1,54 @@
+{% extends "main.html" %} {% load static %} {% block content %}
+<!-- Start Main-->
+<main class="main--form form--small">
+  <div class="container">
+    <div class="box">
+      <div class="login__text">
+        <div class="nav__logo">
+          <a class="logo" href="/">
+            <i class="fa-solid fa-code"></i>
+          </a>
+        </div>
+        <h2>Account Login</h2>
+        <p>Hello Developer, Welcome Back!</p>
+      </div>
+      <form action="{% url 'login' %}" method="POST" class="form">
+        {% csrf_token %}
+        <div class="form--field">
+          <label for="username">Username:</label>
+          <input
+            class="input input--text"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username..."
+          />
+        </div>
+
+        <div class="form--field">
+          <label for="password">Password:</label>
+          <input
+            class="input input--text"
+            type="password"
+            placeholder="••••••••"
+            name="password"
+            id="password"
+          />
+        </div>
+        <div class="forget__password">
+          <a href="forgetpassword.html">Forget Password?</a>
+        </div>
+
+        <input class="btn" type="submit" value="Log In" />
+      </form>
+
+      <div class="sign__up">
+        <p>Don’t have an Account?</p>
+        <a href="signup.html">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- End Main -->
+
+{% endblock content %}

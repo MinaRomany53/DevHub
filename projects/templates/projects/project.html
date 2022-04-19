@@ -34,11 +34,15 @@
     {% endif %}
     <div class="single-project__info">
       <p>
+        {%if projectObj.owner.id %}
         <a
           class="single-project__author"
           href="{% url 'profile' projectObj.owner.id %}"
           >By {{projectObj.owner.name}}</a
         >
+        {%else%}
+        <a class="single-project__author" href="">By Anonymous</a>
+        {%endif%}
       </p>
       <h2 class="single-project__title">{{projectObj.title}}</h2>
     </div>

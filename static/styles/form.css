@@ -1,6 +1,11 @@
 .main--form {
   min-height: 80vh;
 }
+@media (max-width: 786px) {
+  .main--form {
+    min-height: 80.4vh;
+  }
+}
 
 .main--form .container {
   display: flex;
