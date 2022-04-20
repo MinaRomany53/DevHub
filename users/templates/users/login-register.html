@@ -1,0 +1,97 @@
+{% extends "main.html" %} {% load static %} {% block content %}
+<!---->
+{% if page == "register" %}
+
+<!-- Start Main-->
+<main class="main--form form--small">
+  <div class="container">
+    <div class="box">
+      <div class="login__text">
+        <div class="nav__logo">
+          <a class="logo" href="/">
+            <i class="fa-solid fa-code"></i>
+          </a>
+        </div>
+        <h2>Account SignUp</h2>
+        <p>Create a new developer account</p>
+      </div>
+      <form action="{% url 'register' %}" method="POST" class="form">
+        {% csrf_token %} {% for field in form %}
+        <div class="form--field">
+          <label for="">{{field.label}}</label>
+          {{field}} {% for error in field.errors %}
+          <small style="color: red"> {{error}}</small> {% endfor %}
+        </div>
+        {%endfor%}
+        <input class="btn" type="submit" value="Register" />
+      </form>
+
+      <div class="sign__up">
+        <p>Already have an Account?</p>
+        <a href="{% url 'login' %}">Log In</a>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- End Main -->
+
+<script
+  type="text/javascript"
+  src="{% static 'js/styling-register-form.js' %}"
+></script>
+
+{% else %}
+
+<!-- Start Main-->
+<main class="main--form form--small">
+  <div class="container">
+    <div class="box">
+      <div class="login__text">
+        <div class="nav__logo">
+          <a class="logo" href="/">
+            <i class="fa-solid fa-code"></i>
+          </a>
+        </div>
+        <h2>Account Login</h2>
+        <p>Hello Developer, Welcome Back!</p>
+      </div>
+      <form action="{% url 'login' %}" method="POST" class="form">
+        {% csrf_token %}
+        <div class="form--field">
+          <label for="username">Username:</label>
+          <input
+            class="input input--text"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username..."
+          />
+        </div>
+
+        <div class="form--field">
+          <label for="password">Password:</label>
+          <input
+            class="input input--text"
+            type="password"
+            placeholder="••••••••"
+            name="password"
+            id="password"
+          />
+        </div>
+        <div class="forget__password">
+          <a href="forgetpassword.html">Forget Password?</a>
+        </div>
+
+        <input class="btn" type="submit" value="Log In" />
+      </form>
+
+      <div class="sign__up">
+        <p>Don’t have an Account?</p>
+        <a href="{% url 'register' %}">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- End Main -->
+
+{% endif %} {% endblock content %}
