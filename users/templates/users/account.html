@@ -1,9 +1,13 @@
 {% extends "main.html" %} {% load static %} {% block content %}
+
 <!-- Start Main-->
 <main class="main main--profile">
   <div class="container">
     <div class="layout">
-      <div class="profile__card">
+      <div class="profile__card account__card">
+        <a href="" class="btn profile__edit--btn"
+          ><i class="fa-solid fa-pen-to-square profile__edit--icon"></i>Edit</a
+        >
         <img
           src="{{profile.image.url}}"
           alt="dev image"
@@ -48,8 +52,6 @@
           </li>
           {% endif %}
         </ul>
-
-        <a href="#" class="btn profile__card--btn">Send Message</a>
       </div>
 
       <!--
@@ -57,33 +59,65 @@
           -->
 
       <div class="profile__content">
-        <div class="profile__content--desc section--padding">
+        <div
+          class="profile__content--desc section--padding section--padding--2"
+        >
           <h3 class="subtitle">About Me</h3>
-          <p>{{profile.bio}}</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+            exercitationem esse inventore similique, eveniet ex sed rerum
+            expedita, illum praesentium debitis quae, iste deserunt numquam
+            provident! Perspiciatis, fuga. Neque excepturi rem facere ducimus
+            aspernatur, ratione error distinctio explicabo asperiores sequi
+            nobis sunt incidunt assumenda, maiores est. Commodi repellendus
+            nostrum possimus, Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Excepturi exercitationem esse inventore similique, eveniet ex
+            sed rerum expedita, illum praesentium debitis quae, iste deserunt
+            numquam provident! Perspiciatis, fuga. Neque excepturi rem facere
+            ducimus aspernatur, ratione error distinctio explicabo asperiores
+            sequi nobis sunt incidunt assumenda, maiores est. Commodi
+            repellendus nostrum possimus.
+          </p>
         </div>
-        <div class="profile__content--skills section--padding">
-          <h3 class="subtitle">Skills</h3>
-          {%for skill in topSkills%}
-          <div class="skill">
-            <span class>{{skill.name}}</span>
-            <p>{{skill.description}}</p>
+        <div
+          class="profile__content--skills section--padding section--padding--2"
+        >
+          <div class="section--header">
+            <h3 class="subtitle">Skills</h3>
+            <a href="" class="btn add--btn"
+              ><i class="fa-solid fa-plus add--icon"></i>Add Skill</a
+            >
           </div>
-          {%endfor%}
-          <div class="otherSkills section--padding">
-            <h3 class="subtitle">Other Skills</h3>
-            <div class="tags tags__container">
-              {% for skill in otherSkills %}
-              <span class="tag">
-                <small>{{skill.name}}</small>
-              </span>
-              {%endfor%}
+          {%for skill in skills%}
+          <div class="skill skill--account">
+            <div class="skill__content">
+              <span class>{{skill.name}}</span>
+              <p>{{skill.description}}</p>
+            </div>
+            <div class="skill__btns">
+              <a href="" class="btn edit__btn"
+                ><i class="fa-solid fa-pen-to-square edit__btn--icon"></i
+                >Edit</a
+              >
+              <a href="" class="btn delete__btn"
+                ><i class="fa-solid fa-trash delete__btn--icon"></i>Delete</a
+              >
             </div>
           </div>
+          <hr />
+          {%endfor%}
         </div>
-        <div class="profile__content--projects section--padding">
-          <h3 class="subtitle">Projects</h3>
+        <div
+          class="profile__content--projects section--padding section--padding--2"
+        >
+          <div class="section--header">
+            <h3 class="subtitle">Projects</h3>
+            <a href="{% url 'create-project'%}" class="btn add--btn"
+              ><i class="fa-solid fa-plus add--icon"></i>Add Project</a
+            >
+          </div>
           <div class="cards">
-            {% for project in profile.project_set.all %}
+            {% for project in projects %}
             <div class="card">
               <a href="{% url 'project' project.id %}" class="card__body">
                 <img
@@ -114,25 +148,28 @@
                   </div>
                 </div>
               </a>
+              <hr />
+              <div class="project__btns">
+                <a
+                  href="{% url 'update-project' project.id %}"
+                  class="btn edit__btn"
+                  ><i class="fa-solid fa-pen-to-square edit__btn--icon"></i
+                  >Edit</a
+                >
+                <a
+                  href="{% url 'delete-project' project.id %}"
+                  class="btn delete__btn"
+                  ><i class="fa-solid fa-trash delete__btn--icon"></i>Delete</a
+                >
+              </div>
             </div>
             {%endfor%}
           </div>
         </div>
       </div>
-
-      <!--
-              
-          -->
     </div>
   </div>
 </main>
 <!-- End Main -->
 
-{% endblock content %}
-
-<!--
-  
-<a href="{% url 'update-project' project.id %}">Update 🔄</a>
-<a href="{% url 'delete-project' project.id %}">Delete ❌</a>
-
--->
+{% endblock %}

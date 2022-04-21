@@ -1,6 +1,9 @@
+from multiprocessing import context
 from pickle import FALSE
 from django.shortcuts import render , redirect
-from django.contrib.auth.models import User # User Table 
+from django.contrib.auth.models import User
+
+from projects.views import projects # User Table 
 from .models import Profile
  
 from django.contrib.auth import authenticate , login ,logout
@@ -13,8 +16,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 
 
-
-# Authentication 
+################################################################
+######################## Authentication ######################## 
+################################################################
 def loginUser (request):
 
     # Hide LogIn Page from logged in users 
@@ -36,7 +40,7 @@ def loginUser (request):
 
         if checkUser:
             login(request,checkUser)  # Start Session using Browser Cookies 
-            return redirect("profiles")
+            return redirect("account")
         else:
             # print("Wrong Username OR Password !")
             messages.error(request, "Wrong Username OR Password")
@@ -67,7 +71,9 @@ def registerUser (request):
     page = "register"
     context = {"page":page, "form":form}
     return render(request , "users/login-register.html" , context)
-
+################################################################
+######################## Authentication ######################## 
+################################################################
 
 
 
@@ -89,3 +95,13 @@ def profile(request , pk):
 
     context = {'profile' : profile , 'topSkills':topSkills,'otherSkills':otherSkills}
     return render(request , "users/user_profile.html" , context)
+
+
+@login_required(login_url="login")
+def account (request):
+    profile = request.user.profile
+    skills = profile.skill_set.all()
+    projects = profile.project_set.all()
+
+    context = {'profile' : profile , 'skills':skills , 'projects':projects }
+    return render(request , 'users/account.html', context)

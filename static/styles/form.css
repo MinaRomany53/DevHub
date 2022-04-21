@@ -55,24 +55,6 @@
 
 .box .form .form--field .input {
   color: var(--color-secondary);
-  min-width: 24rem;
-  width: 100%;
-  font-size: 1.6rem;
-  padding: 1.2rem 1.5rem;
-  border-radius: 0.5rem;
-  border: 2px solid var(--color-secondary);
-  outline: none;
-  transition: all 0.3s ease-in-out;
-  background-color: transparent;
-}
-.box .form .form--field .input::placeholder {
-  color: #777;
-  font-size: 1.4rem;
-}
-.box .form .form--field .input:focus,
-.box .form .form--field .input:active {
-  outline: none;
-  border: 2px solid var(--color-border);
 }
 
 .box .form .btn {

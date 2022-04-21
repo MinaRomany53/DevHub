@@ -1,0 +1,62 @@
+.layout .account__card {
+  max-height: 58rem;
+}
+.profile__edit--btn {
+  margin-bottom: 3rem;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.2rem;
+  border-radius: 25rem;
+}
+.profile__edit--icon {
+  margin-right: 1rem;
+}
+.section--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add--btn {
+  margin-bottom: 3rem;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.4rem;
+  border-radius: 25rem;
+}
+.add--icon {
+  margin-right: 1rem;
+}
+.skill--account {
+  flex-direction: column;
+}
+.skill__content {
+  margin-bottom: 1rem;
+}
+.edit__btn,
+.delete__btn {
+  margin-bottom: 3rem;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.2rem;
+  border-radius: 25rem;
+}
+.edit__btn--icon,
+.delete__btn--icon {
+  margin-right: 1rem;
+}
+.section--padding--2 {
+  margin-bottom: 2rem;
+}
+.project__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+.project__btns .edit__btn {
+  margin-right: 1rem;
+}
+.project__btns .edit__btn,
+.project__btns .delete__btn {
+  margin-bottom: 0;
+}

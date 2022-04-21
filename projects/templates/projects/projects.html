@@ -54,8 +54,6 @@
                 Feedback ({{project.vote_count}}
                 Vote{{project.vote_count|pluralize:"s"}})
               </p>
-              <a href="{% url 'update-project' project.id %}">Update 🔄</a>
-              <a href="{% url 'delete-project' project.id %}">Delete ❌</a>
               <div class="project__tags tags__container">
                 {% for tag in project.tag_id.all|slice:"5" %}
                 <span class="tag">

@@ -44,25 +44,8 @@
 .form--small .form--field .input {
   color: var(--color-secondary);
   height: 5rem;
-  min-width: 24rem;
-  width: 100%;
-  font-size: 1.6rem;
-  padding: 1.2rem 1.5rem;
-  border-radius: 0.5rem;
-  background-color: transparent;
-  border: 2px solid var(--color-secondary);
-  outline: none;
-  transition: all 0.3s ease-in-out;
 }
-.form--small .form--field .input::placeholder {
-  color: #777;
-  font-size: 1.4rem;
-}
-.form--small .form--field .input:focus,
-.form--small .form--field .input:active {
-  outline: none;
-  border: 2px solid var(--color-border);
-}
+
 .form--small .form .btn {
   font-size: 1.6rem;
   font-weight: 600;
