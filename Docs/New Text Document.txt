@@ -1,6 +1,9 @@
---Activate your VirtualEnv every time
+-- Activate your VirtualEnv every time
 Set-ExecutionPolicy Unrestricted -Scope Process
 env\scripts\activate
 --------------------------------------------------
---Run Live Server
+-- Run Live Server
  py manage.py runserver
+ --------------------------------------------------
+ -- install pillow module to use imageField with models
+ py -m pip install pillow 

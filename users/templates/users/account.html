@@ -5,7 +5,7 @@
   <div class="container">
     <div class="layout">
       <div class="profile__card account__card">
-        <a href="" class="btn profile__edit--btn"
+        <a href="{%url 'edit-account'%}" class="btn profile__edit--btn"
           ><i class="fa-solid fa-pen-to-square profile__edit--icon"></i>Edit</a
         >
         <img
@@ -63,28 +63,14 @@
           class="profile__content--desc section--padding section--padding--2"
         >
           <h3 class="subtitle">About Me</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-            exercitationem esse inventore similique, eveniet ex sed rerum
-            expedita, illum praesentium debitis quae, iste deserunt numquam
-            provident! Perspiciatis, fuga. Neque excepturi rem facere ducimus
-            aspernatur, ratione error distinctio explicabo asperiores sequi
-            nobis sunt incidunt assumenda, maiores est. Commodi repellendus
-            nostrum possimus, Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Excepturi exercitationem esse inventore similique, eveniet ex
-            sed rerum expedita, illum praesentium debitis quae, iste deserunt
-            numquam provident! Perspiciatis, fuga. Neque excepturi rem facere
-            ducimus aspernatur, ratione error distinctio explicabo asperiores
-            sequi nobis sunt incidunt assumenda, maiores est. Commodi
-            repellendus nostrum possimus.
-          </p>
+          <p>{{profile.bio}}</p>
         </div>
         <div
           class="profile__content--skills section--padding section--padding--2"
         >
           <div class="section--header">
             <h3 class="subtitle">Skills</h3>
-            <a href="" class="btn add--btn"
+            <a href="{% url 'add-skill'%}" class="btn add--btn"
               ><i class="fa-solid fa-plus add--icon"></i>Add Skill</a
             >
           </div>
@@ -95,11 +81,13 @@
               <p>{{skill.description}}</p>
             </div>
             <div class="skill__btns">
-              <a href="" class="btn edit__btn"
+              <a href="{% url 'edit-skill' skill.id %}" class="btn edit__btn"
                 ><i class="fa-solid fa-pen-to-square edit__btn--icon"></i
                 >Edit</a
               >
-              <a href="" class="btn delete__btn"
+              <a
+                href="{% url 'delete-skill' skill.id %}"
+                class="btn delete__btn"
                 ><i class="fa-solid fa-trash delete__btn--icon"></i>Delete</a
               >
             </div>

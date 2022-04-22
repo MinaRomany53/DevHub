@@ -182,3 +182,41 @@
   color: var(--color-border);
 }
 /* End Footer */
+
+/* Start Flash Messages*/
+.alert {
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+}
+.alert__content {
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+}
+.alert--success {
+  background-color: #d4edda;
+}
+.alert--error {
+  background-color: #f8d7da;
+}
+.alert__message {
+  margin-right: 1.5rem;
+  color: black;
+}
+.alert__close {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+/* End Flash Messages*/

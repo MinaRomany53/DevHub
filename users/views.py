@@ -1,5 +1,3 @@
-from multiprocessing import context
-from pickle import FALSE
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 
@@ -13,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 #https://www.javatpoint.com/django-usercreationform
 from django.contrib.auth.forms import UserCreationForm  
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm , profileForm ,SkillForm
 
 
 ################################################################
@@ -62,9 +60,9 @@ def registerUser (request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Your Account Created Successfully ")
-            return redirect("login")
+            user = form.save(commit=False)
+            login(request,user) # Start Session using Browser Cookies 
+            return redirect("edit-account")
         else:
             messages.error(request, "An Error Occurred Please Enter Valid Data ")
 
@@ -105,3 +103,68 @@ def account (request):
 
     context = {'profile' : profile , 'skills':skills , 'projects':projects }
     return render(request , 'users/account.html', context)
+
+
+@login_required(login_url="login")
+def editAccount (request):
+    currProfile = request.user.profile
+    form = profileForm(instance=currProfile)
+    if request.method == "POST":
+        form = profileForm(request.POST,request.FILES,instance=currProfile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your Account Info Updated Successfully ")
+            return redirect("account") 
+
+
+    context={"form":form}
+    return render (request , "users/profile_form.html" , context)
+
+
+@login_required(login_url="login")
+def addSkill (request):
+    currprofile = request.user.profile
+    form = SkillForm()
+    if request.method == "POST":
+        form = SkillForm(request.POST)
+        if form.is_valid:
+            skill = form.save(commit=False)
+            skill.owner = currprofile
+            skill.save()
+            messages.success(request, "Your Skill Added Successfully ")
+            return redirect("account") 
+
+
+    context={"form": form}
+    return render(request , 'users/skill_form.html' ,context)
+
+
+@login_required(login_url="login")
+def editSkill (request , pk):
+    currprofile = request.user.profile
+    skill = currprofile.skill_set.get(id=pk)
+    form = SkillForm(instance=skill)
+    if request.method == "POST":
+        form = SkillForm(request.POST,instance=skill)
+        if form.is_valid:
+            form.save()
+            messages.success(request, "Your Skill Updated Successfully ")
+            return redirect("account") 
+
+
+    context={"form": form}
+    return render(request , 'users/skill_form.html' ,context)
+
+
+@login_required(login_url="login")
+def deleteSkill (request , pk):
+    currprofile = request.user.profile
+    skill = currprofile.skill_set.get(id=pk)
+    if request.method == "POST":
+        skill.delete()
+        messages.success(request, "Your Skill deleted Successfully ")
+        return redirect("account") 
+
+    skillMessage =  True
+    context={"object": skill , "skillMessage":skillMessage}
+    return render(request , 'users/delete_template.html' ,context)

@@ -1,0 +1,29 @@
+{% extends "main.html" %} {% load static %} {% block content %}
+
+<!-- Start Main-->
+<main class="main--form">
+  <div class="container">
+    <div class="box">
+      <a class="backButton" href="{% url 'account' %}"
+        ><i class="fa-solid fa-chevron-left backButton--icon"></i
+      ></a>
+      <form
+        action="{%url 'edit-account'%}"
+        method="POST"
+        class="form"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %} {% for field in form %}
+        <div class="form--field">
+          <label for="text">{{field.label}}</label>
+          {{field}}
+        </div>
+        {% endfor %}
+        <input class="btn" type="submit" value="Submit" />
+      </form>
+    </div>
+  </div>
+</main>
+<!-- End Main -->
+<script type="text/javascript" src="{% static 'js/styling-form.js' %}"></script>
+{% endblock content %}

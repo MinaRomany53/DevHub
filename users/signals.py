@@ -22,6 +22,22 @@ def createProfile(sender , instance , created , **kwargs ):
 post_save.connect(createProfile , sender=User)
 
 
+
+# Signal Reciever Function (post_save)
+# Update User Info when his Profile Updated 
+def updateUser(sender , instance , created , **kwargs ):
+    profile = instance
+    user = profile.user
+    if created == False:
+        user.first_name = profile.name
+        user.username = profile.username
+        user.email = profile.email
+        user.save()
+
+post_save.connect(updateUser , sender=Profile)
+
+
+
 # Signal Reciever Function (post_delete)
 # Delete User if his Profile Deleted
 def deleteUser (sender , instance ,**kwargs):

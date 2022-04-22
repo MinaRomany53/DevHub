@@ -3,7 +3,7 @@
 <main class="main--form">
   <div class="container">
     <div class="box">
-      <h3>Are you Sure You Want To Delete "{{object.title}}" ?</h3>
+      <h3>Are you Sure You Want To Delete " {{object.name}} " ?</h3>
       <form action="" method="POST">
         {% csrf_token %}
         <a href="{% url 'account' %}" class="btn" style="text-decoration: none"
